@@ -15,7 +15,20 @@ def treeSum(root):
     if not root:
         return 0
 
-    return root.val + treeSum(root.left) + treeSum(root.right)
+    queue = [root]
+    sum = 0
+
+    while len(queue) > 0:
+        current_node = queue.pop(0)
+
+        sum += current_node.val
+        if current_node.left:
+            queue.append(current_node.left)
+
+        if current_node.right:
+            queue.append(current_node.right)
+
+    return sum
 
 
 a = Node(3)
